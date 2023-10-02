@@ -1,0 +1,7 @@
+.item__li {
+  display: flex;
+  padding: 16px;
+  background-color: #ccc;
+  border: 1px solid black;
+  color: #000;
+}
