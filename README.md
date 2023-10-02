@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## project install
+
+```
+npx create-next-app@latest --experimental-app
+```
+
+## desc
+
+nextjs 컴포넌트는 서버 컴포넌트, 클라이언트 컴포넌트로 나뉨.
+기본적으로 서버 컴포넌트이며, 맨위에 `use client` 를 넣고 만들면 클라이언트 컴포넌트로 동작함.
+
+- 서버 컴포넌트는 html에 자바스크립트 기능을 넣을 수 없음. 예를 들면, 이밴트 리스너. useState, useEffect 사용불가
+- 클라이언트 컴포넌트는 모두 다 사용가능
+
+1. 서버 컴포넌트는 로딩 속도가 빠르고 검색엔진 노출에 이점이 있음. - 첫 로딩시 사용하고 그 후 컴포넌트 단위는 클라이언트 컴포넌트를 사용하면 될 듯함.
+2. 페이지는 서버 컴포넌트, 그 안에 기능은 클라이언트 고고
+# next-13-study
