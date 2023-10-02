@@ -1,5 +1,11 @@
+.item__container {
+  display: flex;
+  gap: 4px;
+}
+
 .item__li {
   display: flex;
+  flex-direction: column;
   padding: 16px;
   background-color: #ccc;
   border: 1px solid black;
