@@ -1,3 +1,7 @@
+.title {
+  font-size: 32px;
+}
+
 .cart__item {
   padding: 10px;
   display: flex;
