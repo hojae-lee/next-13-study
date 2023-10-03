@@ -1,4 +1,6 @@
-`use clinet`;
+'use client';
+
+import { useState } from "react";
 import style from "./item.module.css";
 import Image from 'next/image'
 import food0 from '/public/food0.png'
@@ -12,18 +14,35 @@ import food2 from '/public/food2.png'
  */
 interface Goods {
   name: string,
-  img: any
+  img: any,
+  price: number
 }
 
 const ListItem = () => {
-  const goods:Goods[] = [{name:"상품1", img: food0}, {name:"상품2", img: food1}, {name: "상품3", img:food2}];
+  const goods:Goods[] = [
+    {name: "상품1", img: food0, price: 40},
+    {name: "상품2", img: food1, price: 30},
+    {name: "상품3", img: food2, price: 50}
+  ];
+  const [cnt, setCnt] = useState(0);
+
+  const clickPlusHandler = () => {
+    setCnt(cnt + 1)
+  }
+
+  const clickMinusHandler = () => {
+    setCnt(cnt - 1)
+  }
 
   return (
     <ul className={style.item__container}>
       {goods.map((item, idx) => (
         <li className={style.item__li} key={idx}>
           <Image src={item.img} alt={`상품${idx}`} />
-          {item.name}
+          <h3>{item.name}: ${item.price}</h3>
+          <span>{cnt}</span>
+          <button type="button" onClick={clickPlusHandler}>+</button>
+          <button type="button" onClick={clickMinusHandler}>-</button>
         </li>
       ))}
     </ul>
