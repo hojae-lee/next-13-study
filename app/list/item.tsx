@@ -24,14 +24,19 @@ const ListItem = () => {
     {name: "상품2", img: food1, price: 30},
     {name: "상품3", img: food2, price: 50}
   ];
-  const [cnt, setCnt] = useState(0);
 
-  const clickPlusHandler = () => {
-    setCnt(cnt + 1)
-  }
+  const stateArray = goods.map(() => 0)
+  const [cnt, setCnt] = useState(stateArray);
 
-  const clickMinusHandler = () => {
-    setCnt(cnt - 1)
+  const clickHandler = (count: number, idx: number) => {
+    // state 변경함수 사용시 새 state 와 기존 state 가 같으면 변경하지 않음. 그러니 카피 후, 해야함.
+    /**
+     * cnt[idx] += count
+     * setCnt(copyCnt)
+     */
+    const copyCnt = [...cnt]
+    copyCnt[idx] += count
+    setCnt(copyCnt)
   }
 
   return (
@@ -40,9 +45,9 @@ const ListItem = () => {
         <li className={style.item__li} key={idx}>
           <Image src={item.img} alt={`상품${idx}`} />
           <h3>{item.name}: ${item.price}</h3>
-          <span>{cnt}</span>
-          <button type="button" onClick={clickPlusHandler}>+</button>
-          <button type="button" onClick={clickMinusHandler}>-</button>
+          <span>{cnt[idx]}</span>
+          <button type="button" onClick={() => clickHandler(1, idx)}>+</button>
+          <button type="button" onClick={() => clickHandler(-1, idx)}>-</button>
         </li>
       ))}
     </ul>
